@@ -8,7 +8,7 @@ if (MSVC)
 add_compile_options(/W4)
 else()
 # lots of warnings
-add_compile_options(-Wall -Wextra -Wpedantic -Wconversion -Werror)
+add_compile_options(-Wall -Wextra -Wpedantic -Werror)
 endif()
 
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/)
@@ -29,7 +29,7 @@ enable_testing()
 
 # main app target
 # add_library( )
-add_executable(${PROJECT_NAME main.cpp} )
+add_executable(${PROJECT_NAME} main.cpp)
 # target_link_libraries(${PROJECT_NAME} )
 
 # test target

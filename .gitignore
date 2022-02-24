@@ -1,5 +1,5 @@
 **/build/**
-**/vscode/**
+**/.vscode/**
 The-C-20-Masterclass-Source-Code/
 
 .clang-format
