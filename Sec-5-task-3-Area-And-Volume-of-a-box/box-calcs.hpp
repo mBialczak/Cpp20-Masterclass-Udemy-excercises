@@ -8,3 +8,8 @@ constexpr double BaseArea(double width, double length)
 
     return width * length;
 }
+
+constexpr double BoxVolume(double width, double length, double height)
+{
+    return BaseArea(width, length) * height;
+}
