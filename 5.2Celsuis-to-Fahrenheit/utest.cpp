@@ -1,6 +1,8 @@
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 
+#include <exception>
+
 #include "CelsiusToFahrenheit.hpp"
 
 TEST(CelsiusToFahrenheitTest, CalculatesCorrectValueFor0degCelsius)
@@ -21,4 +23,11 @@ TEST(CelsiusToFahrenheitTest, CalculatesPositiveCelsiusValuesCorrectly)
     EXPECT_DOUBLE_EQ(CelsiusToFahrenheit(0.13), 32.234);
     EXPECT_NEAR(CelsiusToFahrenheit(8.4), 47.12, precission);
     EXPECT_THAT(CelsiusToFahrenheit(48.3), testing::DoubleNear(118.94, precission));
+}
+
+TEST(CelsiusToFahrenheitTest, ShouldThrowWhenCelsiusValueBelowAbsoluteZeroTemp)
+{
+    EXPECT_THROW(CelsiusToFahrenheit(-270.1), std::invalid_argument)
+        << "Should throw std::invalid_argument if less then -270 deg celsius passed";
+    EXPECT_NO_THROW(CelsiusToFahrenheit(-269.999));
 }
