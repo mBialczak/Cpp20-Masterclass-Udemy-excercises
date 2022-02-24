@@ -31,3 +31,17 @@ TEST(BoxVolumeTest, CorrectlyCalculatesVolumeForPositiveArgs)
     EXPECT_DOUBLE_EQ(BoxVolume(0.111, 4.2, 7.3), 3.40326);
     EXPECT_DOUBLE_EQ(BoxVolume(3.77, 1.99, 4.0), 30.0092);
 }
+
+TEST(BoxVolumeTest, ReturnsZeroIfAnyDimmensionIsZero)
+{
+    EXPECT_DOUBLE_EQ(BoxVolume(0, 2.0, 3.0), 0);
+    EXPECT_DOUBLE_EQ(BoxVolume(3.3, 0.0, 6.0), 0);
+    EXPECT_DOUBLE_EQ(BoxVolume(1.1, 22.2, 0), 0);
+}
+
+TEST(BoxVolumeTest, ThrowsIfAnyDimmensionNegative)
+{
+    EXPECT_THROW(BoxVolume(-1.0, 2.0, 3.0), std::invalid_argument);
+    EXPECT_THROW(BoxVolume(3.5, -2.0, 5.2), std::invalid_argument);
+    EXPECT_THROW(BoxVolume(3.5, 2.0, -6.5), std::invalid_argument);
+}
