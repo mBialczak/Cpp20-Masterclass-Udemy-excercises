@@ -11,5 +11,10 @@ constexpr double BaseArea(double width, double length)
 
 constexpr double BoxVolume(double width, double length, double height)
 {
-    return BaseArea(width, length) * height;
+    double volume = BaseArea(width, length) * height;
+    if (volume < 0) {
+        throw std::invalid_argument("Negative dimmension passed!");
+    }
+
+    return volume;
 }
